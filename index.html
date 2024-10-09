@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Products</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Bike Products</h1>
+    <div id="bike-container" class="row mt-4"></div>
+</div>
+
+<script>
+    const bikes = JSON.parse(localStorage.getItem('bikes')) || [];
+
+    function renderBikes() {
+        const bikeContainer = document.getElementById('bike-container');
+        bikeContainer.innerHTML = ''; // Clear existing content
+        bikes.forEach(bike => {
+            const bikeCard = `
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="${bike.image}" class="card-img-top" alt="${bike.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${bike.name}</h5>
+                            <p class="card-text">Type: ${bike.type}</p>
+                            <p class="card-text">Price: $${bike.price}</p>
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            bikeContainer.innerHTML += bikeCard;
+        });
+    }
+
+    // Initial render
+    renderBikes();
+</script>
+
+</body>
+</html>
