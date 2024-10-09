@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikes Details</title>
+    <style>
+        footer {
+            position: relative;
+            left: 500px;
+            top: 50px;
+        }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Bikes List</h1>
+    <div id="bikes-list" class="row"></div>
+</div>
+<footer>
+    <nav>
+       <a href="#">About</a>-<a href="#">Privacy Policy</a>-<a href="#">Terms & Policies</a>-<a href="#">Customer Service</a>
+    </nav>
+    <p>&copy; Just Sport , All Rights Reserved.</p>
+    </footer>
+<script>
+    const bikes = JSON.parse(localStorage.getItem('bikes')) || [];
+
+    function displayBikes() {
+        const bikesList = document.getElementById('bikes-list');
+        bikesList.innerHTML = '';
+
+        bikes.forEach(bike => {
+            const bikeCard = document.createElement('div');
+            bikeCard.className = 'col-md-4 mb-4';
+            bikeCard.innerHTML = `
+                <div class="card">
+                    <img src="${bike.image}" class="card-img-top" alt="${bike.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${bike.name}</h5>
+                        <p class="card-text">Type: ${bike.type}</p>
+                        <p class="card-text">Price: $${bike.price}</p>
+                        <p class="card-text">Stock: ${bike.stock}</p>
+                        <p class="card-text">Description: ${bike.description}</p>
+                        <p class="card-text">Specifications: ${bike.specs}</p>
+                    </div>
+                </div>
+            `;
+            bikesList.appendChild(bikeCard);
+        });
+    }
+
+    displayBikes();
+</script>
+</body>
+</html>
