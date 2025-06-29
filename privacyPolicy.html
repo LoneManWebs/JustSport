@@ -6,23 +6,76 @@
   <title>Privacy Policy & Terms of Service</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-      background-color: #f7f7f7;
-      color: #333;
-    }
-    h1, h2 {
-      color: #111;
-      margin-top: 30px;
-    }
-    p {
-      margin-bottom: 15px;
-    }
-    .section {
-      margin-top: 50px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  color: #333;
+  max-width: 100%; /* Full width on phones */
+}
+
+/* Base typography (mobile) */
+h1, h2 {
+  color: #111;
+  margin-top: 20px;
+  word-wrap: break-word; /* Prevent long words from overflowing */
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+p, ul {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+/* Links */
+a {
+  color: #0066cc;
+  word-break: break-all; /* Handle long URLs */
+}
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+  body {
+    padding: 30px;
+    max-width: 85%; /* Slightly wider */
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  body {
+    padding: 40px;
+    max-width: 900px; /* Original max-width */
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+}px;
     }
   </style>
 </head>
