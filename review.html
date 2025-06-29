@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Country Not Supported</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 2rem auto; padding: 1rem; }
+        #review-form { margin-top: 2rem; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0 15px; }
+        button { background: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DZLDX0KLR6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DZLDX0KLR6');
+</script>
+    <h2>🚧 Service Not Available</h2>
+    <p>We don't currently ship to your country.</p>
+    
+    <div id="review-form">
+        <h3>Request Expansion</h3>
+        <form id="country-request">
+            <input type="text" name="country" id="user-country" readonly>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="What products interest you?" required></textarea>
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedData = JSON.parse(localStorage.getItem('unsupported_country_data') || {});
+            document.getElementById('user-country').value = savedData.country || 'Your Country';
+            
+            document.getElementById('country-request').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+      
+                fetch('https://justsportserver-icbf.onrender.com/country-requests', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        country: formData.get('country'),
+                        email: formData.get('email'),
+                        message: formData.get('message'),
+                        cart: savedData.cart || []
+                    }),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                .then(() => alert('Request submitted! We\'ll notify you when we expand.'))
+                .catch(() => alert('Submission failed. Please try again later.'));
+            });
+        });
+    </script>
+</body>
+</html>
